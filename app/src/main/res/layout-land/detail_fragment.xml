@@ -22,11 +22,11 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/guideline_h_40"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_v_45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bg_detail_bottom_cornered" />
+            app:srcCompat="@drawable/bg_detail_right_cornered" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_back"
@@ -49,12 +49,12 @@
             android:layout_marginStart="@dimen/key_line_5"
             android:layout_marginEnd="@dimen/key_line_5"
             android:elevation="@dimen/card_elevation"
-            app:layout_constraintBottom_toBottomOf="@id/guideline_h_40"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="4:3"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_45"
+            app:layout_constraintHeight_percent=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline_h_40"
-            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_logo" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,8 +68,8 @@
             android:padding="@dimen/key_line_4"
             app:layout_constraintBottom_toTopOf="@id/cl_country_capital"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_flag">
+            app:layout_constraintStart_toStartOf="@id/guideline_v_45"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="0dp"
@@ -110,7 +110,7 @@
             android:padding="@dimen/key_line_4"
             app:layout_constraintBottom_toTopOf="@id/cl_continent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_45"
             app:layout_constraintTop_toBottomOf="@id/cl_country_name">
 
             <TextView
@@ -152,7 +152,7 @@
             android:padding="@dimen/key_line_4"
             app:layout_constraintBottom_toTopOf="@id/cl_country_population"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_45"
             app:layout_constraintTop_toBottomOf="@id/cl_country_capital">
 
             <TextView
@@ -194,7 +194,7 @@
             android:padding="@dimen/key_line_4"
             app:layout_constraintBottom_toTopOf="@id/cl_country_currency"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_45"
             app:layout_constraintTop_toBottomOf="@id/cl_continent">
 
             <TextView
@@ -236,7 +236,7 @@
             android:padding="@dimen/key_line_4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_45"
             app:layout_constraintTop_toBottomOf="@id/cl_country_population">
 
             <TextView
@@ -268,11 +268,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_h_40"
+            android:id="@+id/guideline_v_45"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".25" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".45" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
