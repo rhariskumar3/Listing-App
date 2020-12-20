@@ -10,5 +10,5 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main"
-        tools:context=".MainActivity" />
+        tools:context=".ui.base.MainActivity" />
 </layout>

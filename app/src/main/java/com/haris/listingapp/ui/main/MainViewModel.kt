@@ -1,31 +1,28 @@
 package com.haris.listingapp.ui.main
 
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.*
 import com.haris.listingapp.data.model.Country
-import com.haris.listingapp.data.remote.RestCountriesService
+import com.haris.listingapp.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
-import java.util.*
 
-class MainViewModel : ViewModel(), LifecycleObserver {
+class MainViewModel : BaseViewModel(), LifecycleObserver {
 
-    private var localCountries = listOf<Country>()
-
-    private val _countries: MutableLiveData<List<Country>> = MutableLiveData(arrayListOf())
-    val countries: LiveData<List<Country>> get() = _countries
+    val allCountries = medium.database.getAll()
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun data() {
+    private fun data() {
         viewModelScope.launch {
-            val countries = RestCountriesService.create().allCountries()
-            _countries.postValue(countries)
-            localCountries = countries
+            apiLaunch({ it.allCountries() }, progress = allCountries.value.orEmpty().isEmpty(), {
+                addDataToDatabase(it.orEmpty())
+            })
         }
     }
 
-    fun search(term: String = "") {
-        _countries.postValue(localCountries.filter {
-            it.name.toLowerCase(Locale.getDefault()).contains(term.toLowerCase(
-                Locale.getDefault()))
-        }.sortedBy { it.name })
+    @WorkerThread
+    private fun addDataToDatabase(list: List<Country>) {
+        viewModelScope.launch {
+            medium.database.insertAll(list)
+        }
     }
 }

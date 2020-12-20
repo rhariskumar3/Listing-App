@@ -6,6 +6,7 @@ import com.haris.listingapp.BuildConfig
 import com.haris.listingapp.data.model.Country
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit
 interface RestCountriesService {
 
     @GET("rest/v2/all")
-    suspend fun allCountries(): List<Country>
+    suspend fun allCountries(): Response<List<Country>>
 
     companion object {
         private const val BASE_URL = "https://restcountries.eu/"
