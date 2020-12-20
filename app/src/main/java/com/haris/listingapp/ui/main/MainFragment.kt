@@ -48,6 +48,7 @@ class MainFragment : Fragment() {
             // Handle Empty Data UI
             binding.textEmpty.isGone = countries.isNotEmpty()
             binding.groupCountries.isGone = countries.isEmpty()
+            binding.progressCircular.isGone = true
             // Query Listener and Filter
             binding.searchCountries.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?) = true
@@ -61,6 +62,9 @@ class MainFragment : Fragment() {
                     return true
                 }
             })
+        })
+        viewModel.progressState.observe(viewLifecycleOwner, {
+            binding.progressCircular.isGone = it.not()
         })
     }
 }
