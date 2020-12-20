@@ -8,6 +8,10 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+
+        <variable
+            name="country"
+            type="com.haris.listingapp.data.model.Country" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -16,7 +20,8 @@
         android:layout_margin="@dimen/key_line_1"
         android:onClick="@{clickListener}"
         app:cardCornerRadius="@dimen/card_corner_radius"
-        app:cardElevation="@dimen/card_elevation">
+        app:cardElevation="@dimen/card_elevation"
+        app:cardPreventCornerOverlap="false">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,9 +29,9 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_logo"
+                imageSvg="@{country.flag}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:scaleType="centerInside"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +44,7 @@
                 android:layout_marginBottom="@dimen/key_line_0"
                 android:gravity="center"
                 android:maxLines="2"
+                android:text="@{country.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
