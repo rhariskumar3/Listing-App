@@ -3,12 +3,14 @@ package com.haris.listingapp.ui.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.haris.listingapp.R
 import com.haris.listingapp.data.model.Country
 import com.haris.listingapp.databinding.ListItemCountriesBinding
+import com.haris.listingapp.utils.Toast
 
 class CountriesAdapter :
     ListAdapter<Country, CountriesAdapter.ViewHolder>(CountriesComparator) {
@@ -37,7 +39,8 @@ class CountriesAdapter :
             with(binding) {
                 country = item
                 setClickListener {
-
+                    it.findNavController()
+                        .navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(item))
                 }
             }
         }

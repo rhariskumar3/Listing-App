@@ -1,4 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+    <string name="capital">Capital</string>
+
+    <string name="continent">Continent</string>
+
+    <string name="country">Country</string>
+
+    <string name="currency">Currency</string>
+
     <string name="hint_search">Search…</string>
+
     <string name="looks_nothing_found">Looks Nothing Found!!!</string>
+
+    <string name="population">Population</string>
 </resources>

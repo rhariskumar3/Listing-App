@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.haris.listingapp.ui.splash.SplashFragment"
-        android:label="Splash">
+        android:label="Splash"
+        tools:layout="@layout/splash_fragment">
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
             app:destination="@id/mainFragment"
@@ -21,5 +23,23 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.haris.listingapp.ui.main.MainFragment"
-        android:label="Main" />
+        android:label="Main"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.haris.listingapp.ui.detail.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/detail_fragment">
+        <argument
+            android:name="country"
+            app:argType="com.haris.listingapp.data.model.Country" />
+    </fragment>
 </navigation>
