@@ -35,6 +35,7 @@ open class BaseViewModel : ViewModel() {
         try {
             with(request(medium.countriesRestService)) {
                 body()?.let {
+                    _progressState.postValue(false)
                     response(it)
                 }
                 errorBody()?.let {
@@ -50,6 +51,7 @@ open class BaseViewModel : ViewModel() {
             }
         } catch (e: Exception) {
             e.printStackTrace()
+            _progressState.postValue(false)
             when (e) {
                 is SocketTimeoutException -> Toast.error(TIMEOUT_ERROR.message)
                 is UnknownHostException -> Toast.error(INTERNAL_SERVER_ERROR.message + " Please contact admin...")

@@ -39,6 +39,7 @@
             android:layout_marginStart="@dimen/key_line_4"
             android:layout_marginTop="@dimen/key_line_3"
             android:layout_marginEnd="@dimen/key_line_4"
+            android:animateLayoutChanges="false"
             android:visibility="visible"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
