@@ -16,6 +16,87 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainFragment">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_weather"
+            isGone="@{!viewModel.weatherDataAvailable}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/amethyst"
+            android:padding="@dimen/key_line_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/key_line_1"
+                android:layout_marginEnd="@dimen/key_line_0"
+                android:gravity="center_vertical"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v_40"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_v_40"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".4" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_weather"
+                imageUrl="@{viewModel.weatherIcon}"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_logo" />
+
+            <TextView
+                android:id="@+id/text_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/key_line_1"
+                android:text="@{viewModel.locationName}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/text_weather"
+                app:layout_constraintEnd_toStartOf="@id/img_weather"
+                app:layout_constraintTop_toTopOf="@id/img_weather"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/text_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/key_line_1"
+                android:text="@{viewModel.weatherName}"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/img_weather"
+                app:layout_constraintEnd_toStartOf="@id/img_weather"
+                app:layout_constraintTop_toBottomOf="@id/text_location"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/text_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/key_line_1"
+                android:text="@{viewModel.currentTemperature}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/text_location"
+                app:layout_constraintEnd_toStartOf="@id/text_location"
+                app:layout_constraintTop_toTopOf="@id/text_location"
+                tools:text="@string/app_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_countries"
             android:layout_width="match_parent"
@@ -29,7 +110,7 @@
             app:layout_constraintBottom_toTopOf="@id/recycler_countries"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_weather"
             app:queryHint="@string/hint_search" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -59,7 +140,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/cl_weather" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group_countries"

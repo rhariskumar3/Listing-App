@@ -1,14 +1,19 @@
 package com.haris.listingapp.ui.main
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.ActivityCompat
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.haris.listingapp.R
 import com.haris.listingapp.databinding.MainFragmentBinding
 import java.util.*
@@ -20,6 +25,8 @@ class MainFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
 
     private lateinit var adapter: CountriesAdapter
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +44,9 @@ class MainFragment : Fragment() {
         adapter = CountriesAdapter()
         binding.recyclerCountries.adapter = adapter
         subscribeUi()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        location()
     }
 
     private fun subscribeUi() {
@@ -66,5 +76,34 @@ class MainFragment : Fragment() {
         viewModel.progressState.observe(viewLifecycleOwner, {
             binding.progressCircular.isGone = it.not()
         })
+    }
+
+    private fun location() {
+        when {
+            ActivityCompat.checkSelfPermission(requireActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED -> {
+                requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
+                    PERMISSIONS_REQUEST_READ_LOCATION)
+                viewModel.weatherDataAvailable.set(false)
+                return
+            }
+            else -> fusedLocationClient.lastLocation.addOnSuccessListener {
+                viewModel.initWeatherData(it)
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
+        if (requestCode == PERMISSIONS_REQUEST_READ_LOCATION
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED
+        ) location()
+    }
+
+    companion object {
+        private const val PERMISSIONS_REQUEST_READ_LOCATION = 111
     }
 }

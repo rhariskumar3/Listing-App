@@ -18,3 +18,10 @@ fun ImageView.loadSVG(url: String?) {
         load(url, App.appContractor.imageLoader)
     }
 }
+
+@BindingAdapter("imageUrl")
+fun ImageView.loadHttpUrl(url: String?) {
+    if (url.isNullOrEmpty().not()) {
+        load(url)
+    }
+}
