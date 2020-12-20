@@ -49,6 +49,7 @@
             android:layout_marginStart="@dimen/key_line_5"
             android:layout_marginEnd="@dimen/key_line_5"
             android:elevation="@dimen/card_elevation"
+            android:transitionName="flag"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="4:3"
             app:layout_constraintEnd_toStartOf="@id/guideline_v_45"
