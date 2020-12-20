@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.haris.listingapp",
+  "variantName": "processReleaseResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 1,
+      "versionName": "1.0",
+      "outputFile": "com.haris.listingapp_V1_VN-1.0_2020-12-21.apk"
+    }
+  ]
+}
