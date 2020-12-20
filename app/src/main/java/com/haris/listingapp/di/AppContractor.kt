@@ -3,6 +3,7 @@ package com.haris.listingapp.di
 import android.content.Context
 import coil.ImageLoader
 import coil.decode.SvgDecoder
+import coil.size.Precision
 import com.haris.listingapp.App
 import com.haris.listingapp.data.local.AppDatabase
 import com.haris.listingapp.data.remote.RestCountriesService
@@ -34,6 +35,7 @@ class AppContractor(app: App) {
             .componentRegistry {
                 add(SvgDecoder(context))
             }
+            .precision(Precision.INEXACT)
             .build()
     }
 

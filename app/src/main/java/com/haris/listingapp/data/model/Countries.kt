@@ -26,7 +26,7 @@ data class Country(
 ) : Parcelable {
 
     val currency: String
-        get() = currencies.filter { it.name.isNotEmpty() }.joinToString { it.name }
+        get() = currencies.filter { it.name.isNullOrEmpty() }.joinToString { it.name.orEmpty() }
 
     val peoples: String
         get() = population.toDenotedString()
@@ -35,7 +35,7 @@ data class Country(
 @Parcelize
 data class Currency(
     val code: String,
-    val name: String,
+    val name: String? = "",
     val symbol: String,
 ) : Parcelable
 
