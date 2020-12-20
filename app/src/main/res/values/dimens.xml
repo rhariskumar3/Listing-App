@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <dimen name="button_corner_radius">4dp</dimen>
+
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+
+    <dimen name="default_text_size">14sp</dimen>
+
+    <dimen name="elevation_default_top_app_bar">8dp</dimen>
+
+    <dimen name="key_line_0">2dp</dimen>
+    <dimen name="key_line_1">4dp</dimen>
+    <dimen name="key_line_2">8dp</dimen>
+    <dimen name="key_line_3">12dp</dimen>
+    <dimen name="key_line_4">16dp</dimen>
+    <dimen name="key_line_5">24dp</dimen>
+    <dimen name="key_line_6">30dp</dimen>
+    <dimen name="key_line_7">36dp</dimen>
+
+    <dimen name="search_corner_radius">8dp</dimen>
+</resources>
