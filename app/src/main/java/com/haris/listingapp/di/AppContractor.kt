@@ -1,6 +1,8 @@
 package com.haris.listingapp.di
 
 import android.content.Context
+import coil.ImageLoader
+import coil.decode.SvgDecoder
 import com.haris.listingapp.App
 import com.haris.listingapp.data.local.AppDatabase
 import com.haris.listingapp.data.remote.RestCountriesService
@@ -24,6 +26,15 @@ class AppContractor(app: App) {
     /* Application Level Network Manager */
     val networkHelper by lazy {
         ConnectionStateMonitor(app)
+    }
+
+    /* Application Level Coil Image Loader */
+    val imageLoader by lazy {
+        ImageLoader.Builder(context)
+            .componentRegistry {
+                add(SvgDecoder(context))
+            }
+            .build()
     }
 
     init {
