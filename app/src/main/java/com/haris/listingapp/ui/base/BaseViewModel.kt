@@ -18,11 +18,17 @@ import java.net.UnknownHostException
 
 open class BaseViewModel : ViewModel() {
 
+    /* Medium for Globally activated components like network class, logger ... */
     val medium: AppContractor by lazy { App.appContractor }
 
+    /* Progress state of network call */
     private val _progressState = MutableLiveData(false)
     val progressState: LiveData<Boolean> get() = _progressState
 
+    /* REST service function for call RESTCOUNTRIES api
+    *  request: Request for network call
+    *  progress: Boolean - Progress visible or not
+    *  response: Callback of network call */
     fun <T> apiLaunch(
         request: suspend (RestCountriesService) -> Response<T>,
         progress: Boolean = true,

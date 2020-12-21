@@ -7,6 +7,7 @@ import com.haris.listingapp.data.model.Currency
 import com.haris.listingapp.data.model.Language
 import java.lang.reflect.Type
 
+/* Type converter class for store lists in database */
 class Converters {
     @TypeConverter
     fun fromStringToList(value: String?): List<String> {

@@ -33,7 +33,7 @@ class AppContractor(app: App) {
         ConnectionStateMonitor(app)
     }
 
-    /* Application Level Coil Image Loader */
+    /* Application Level Coil Image Loader with SVG support */
     val imageLoader by lazy {
         ImageLoader.Builder(context)
             .componentRegistry {

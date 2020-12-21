@@ -13,6 +13,7 @@ class App : Application() {
     companion object {
         private lateinit var contractor: AppContractor
 
+        /* Global medium for reach Globally initiated components like toast, logger .. */
         val appContractor by lazy {
             contractor
         }

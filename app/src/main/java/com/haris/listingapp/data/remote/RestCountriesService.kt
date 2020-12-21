@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 
 interface RestCountriesService {
 
+    /* Returns list of all countries */
     @GET("rest/v2/all")
     suspend fun allCountries(): Response<List<Country>>
 

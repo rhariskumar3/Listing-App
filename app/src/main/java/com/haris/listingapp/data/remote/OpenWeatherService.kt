@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 
 interface OpenWeatherService {
 
+    /* Returns current location weather */
     @GET("data/2.5/weather")
     suspend fun currentWeather(
         @Query("lat") lat: Double,

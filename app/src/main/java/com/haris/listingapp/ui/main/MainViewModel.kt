@@ -33,6 +33,8 @@ class MainViewModel : BaseViewModel(), LifecycleObserver {
     }
 
     val weatherDataAvailable = ObservableBoolean(false)
+
+    /* Init network call for weather using current location */
     fun initWeatherData(location: Location) {
         when {
             location.latitude == 0.0 -> weatherDataAvailable.set(false)

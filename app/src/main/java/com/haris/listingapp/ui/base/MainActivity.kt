@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = host.navController
 
+        /* To know where we are going and what with us , for Debug purpose only */
         navController.addOnDestinationChangedListener { _, destination, args ->
             if (BuildConfig.DEBUG) Log.i(
                 "Navigation", "Navigated to ${destination.label}" + when {
@@ -41,12 +42,15 @@ class MainActivity : AppCompatActivity() {
                     else -> ""
                 }
             )
+            /* On Every Page move, Close keyboard automatically */
             currentFocus?.dismissKeyboard()
         }
 
         networking()
     }
 
+    /* Block for check whether internet connection available or not
+    *  Follows lifecycle of Main Activity */
     private fun networking() {
         val snack =
             Snackbar.make(binding.root, "No Internet Connection", Snackbar.LENGTH_INDEFINITE)
