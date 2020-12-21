@@ -43,6 +43,7 @@ class MainFragment : Fragment() {
 
         adapter = CountriesAdapter()
         binding.recyclerCountries.adapter = adapter
+        binding.recyclerCountries.setItemViewCacheSize(6)
         subscribeUi()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())

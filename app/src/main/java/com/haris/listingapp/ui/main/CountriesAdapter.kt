@@ -8,10 +8,13 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.clear
+import coil.load
+import com.haris.listingapp.App
 import com.haris.listingapp.R
 import com.haris.listingapp.data.model.Country
 import com.haris.listingapp.databinding.ListItemCountriesBinding
-import com.haris.listingapp.utils.Toast
+import com.haris.listingapp.utils.loadSVG
 
 class CountriesAdapter :
     ListAdapter<Country, CountriesAdapter.ViewHolder>(CountriesComparator) {
@@ -34,7 +37,19 @@ class CountriesAdapter :
         }
     }
 
-    class ViewHolder(private val binding: ListItemCountriesBinding) :
+    override fun onViewAttachedToWindow(holder: ViewHolder) {
+        super.onViewAttachedToWindow(holder)
+        with(holder) {
+            binding.imgLogo.loadSVG(getItem(adapterPosition).flag)
+        }
+    }
+
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.binding.imgLogo.clear()
+    }
+
+    class ViewHolder(val binding: ListItemCountriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Country) {
             with(binding) {
